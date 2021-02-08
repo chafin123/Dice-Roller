@@ -1,37 +1,37 @@
-const { stat } = require("fs")
-
 function roll (Die) {
     return (
         Math.floor(Math.random()* Die +1)
     )
 }
+function rollMultipleDie (die, numdie = 1) {
+    let arr = [];
+    for(i = 0; i <= numdie; i++) {
+        arr.push(Math.floor(Math.random)* die +1);
+    }
+}
 function modifiedRoll (Die,Mod) {
-    return (
-        roll(Die) + Mod
-    )
+    return (roll(Die) + Mod )
 } 
 function advantage(x,y) {
-    let a = modifiedRoll(x,y)
-    let b = modifiedRoll(x,y)
-    if(
-        a > b
-    ) return a 
-    else return b
+    let a = modifiedRoll(x,y);
+    let b = modifiedRoll(x,y);
+    if(a > b) { 
+        return a
+    } return b
 }
 function disadvantage(x,y) {
     let a = modifiedRoll(x,y)
     let b = modifiedRoll(x,y)
-     if(
-        a < b
-    ) return a
-    else return b
+     if(a < b) {
+         return a
+        } return b
 }
 function skillCheck(x,y,z) {
     let a = modifiedRoll(x,y);
     
     if(a >= z) {
         return "pass"
-    } else return "fail"
+    } return "fail"
 }
 function high (x,y) {
     let a = modifiedRoll(100,x);
@@ -55,16 +55,16 @@ function statsRerollOne() {
     let c = roll(6);
     let d = roll(6);
     while(a < 2) {
-        let a = roll(6);
+        a = roll(6);
     }
     while(b < 2) {
-        let b = roll(6);
+        b = roll(6);
     }
     while(c < 2) {
-        let c = roll(6);
+        c = roll(6);
     }
     while(d < 2) {
-        let d = roll(6);
+        d = roll(6);
     }
     stats = a + b + c + d;
     let least = a;
@@ -72,9 +72,7 @@ function statsRerollOne() {
     least = (c < least) ? c : least;
     least = (d < least) ? d : least; 
     stats -= least;
-    return(
-        stats
-    )
+    return stats
 }
 function rollStats() {
     let stats = [];
@@ -85,8 +83,6 @@ function rollStats() {
     let e = statsRerollOne();
     let f = statsRerollOne();
     stats.push(a,b,c,d,e,f);
-    return (
-        stats
-    )
+    return stats
 }
-console.log(rollStats());
+

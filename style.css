@@ -1,0 +1,17 @@
+body {
+    background-color: antiquewhite;
+    display: grid;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+}
+section {
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.die-form{
+    display: none;
+}
