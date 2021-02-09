@@ -89,19 +89,23 @@ function rollStats() {
 //Start of HTML interaction
 let arr = [];
 const dieOption = document.getElementById("choose-a-die-option");
+//this function closes forms when the are not choosen
 dieOption.addEventListener("change", function() {
     let currentOption = dieOption.value; 
-    
-//want to figure out how to get form to "close" when selected another form.
-    if(currentOption === "close-forms") {
+    if(arr.length >= 1) {
         for(i=0;i < arr.length; i++) {
+            if(arr[i] !== currentOption) {
             document.getElementById([arr[i]]).style.display = "none";
-        }
+            }
+                }
         arr = [];
-    } else  {
+    } 
+    if(currentOption === "") {
+        alert('choose an option');
+    } else {
         document.getElementById([currentOption]).style.display = "inline";
         arr.push(currentOption);
         console.log(arr);
-        }
+       }
 })
  
