@@ -86,3 +86,22 @@ function rollStats() {
     return stats
 }
 
+//Start of HTML interaction
+let arr = [];
+const dieOption = document.getElementById("choose-a-die-option");
+dieOption.addEventListener("change", function() {
+    let currentOption = dieOption.value; 
+    
+//want to figure out how to get form to "close" when selected another form.
+    if(currentOption === "close-forms") {
+        for(i=0;i < arr.length; i++) {
+            document.getElementById([arr[i]]).style.display = "none";
+        }
+        arr = [];
+    } else  {
+        document.getElementById([currentOption]).style.display = "inline";
+        arr.push(currentOption);
+        console.log(arr);
+        }
+})
+ 

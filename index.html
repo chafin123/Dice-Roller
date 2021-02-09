@@ -5,23 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <h1>Table Top RPG Dice Roller</h1>
     <section class="section-container" id="dice-roll">
-        <form id="dice-roll-form">
             <label id="choose-a-die-option-label">
                 Choose an option
                 <select id="choose-a-die-option">
-                    <option value="">Choose an option</option>
-                    <option value="base-die-roll">Simple Die Roll</option>
-                    <option value="modifed-die-roll">Modifed Die Roll</option>
-                    <option value="advantage-die">Advantage</option>
-                    <option value="disadvantage-die">Disadvantage</option>
-                    <option value="high-roll">High Roll</option>
-                    <option value="low-roll">Low Roll</option>
+                    <option value="close-forms">Choose an option</option>
+                    <option value="base-die-form">Simple Die Roll</option>
+                    <option value="modifed-die-form">Modifed Die Roll</option>
+                    <option value="advantage-die-form">Advantage</option>
+                    <option value="disadvantage-die-form">Disadvantage</option>
+                    <option value="high-roll-form">High Roll</option>
+                    <option value="low-roll-form">Low Roll</option>
                 </select>
             </label>
             <form class="die-form" id="base-die-form">
@@ -88,7 +87,6 @@
                     <input class="die-input" type="number" id="low-roll-modifer" value="0">
                 </label>
             </form>
-        </form>
     </section>
     <br>
     <section class="section-container" id="character-stats">
@@ -101,5 +99,6 @@
             <p id="stats-reroll-ones-sheet-results">Results</p>
         </form>
     </section>
+    <script src="script.js"></script>
 </body>
 </html>
