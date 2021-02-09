@@ -1,13 +1,14 @@
-function roll (Die) {
+function roll (die) {
     return (
-        Math.floor(Math.random()* Die +1)
+        Math.floor(Math.random()* die +1)
     )
 }
-function rollMultipleDie (die, numdie = 1) {
+function rollMultipleDie (die, numDie = 1) {
     let arr = [];
-    for(i = 0; i <= numdie; i++) {
-        arr.push(Math.floor(Math.random)* die +1);
+    for(i = 0; i < numDie; i++) {
+        arr.push(Math.floor(Math.random()) * die +1);
     }
+    return arr;
 }
 function modifiedRoll (Die,Mod) {
     return (roll(Die) + Mod )
@@ -89,7 +90,7 @@ function rollStats() {
 //Start of HTML interaction
 let arr = [];
 const dieOption = document.getElementById("choose-a-die-option");
-//this function closes forms when the are not choosen
+//this function closes forms when they are not choosen
 dieOption.addEventListener("change", function() {
     let currentOption = dieOption.value; 
     if(arr.length >= 1) {
@@ -105,7 +106,19 @@ dieOption.addEventListener("change", function() {
     } else {
         document.getElementById([currentOption]).style.display = "inline";
         arr.push(currentOption);
-        console.log(arr);
        }
 })
- 
+const baseDieRollSides = document.getElementById("number-of-sides-base-die-roll").value;
+const baseDieRollNumberOfDie = document.getElementById("number-of-base-die").value;
+const baseDieRollSubmitButton = document.getElementById("base-die-submit-button");
+const baseDieRollResults = document.getElementById("base-die-results");
+
+baseDieRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(baseDieRollSides);
+    let numDie = parseInt(baseDieRollNumberOfDie);
+    let rollResults = rollMultipleDie(dieSides,numDie);
+    console.log(dieSides,numDie);
+    console.log(rollResults);
+    baseDieRollResults.innerHTML = rollResults;
+})
+console.log(rollMultipleDie(20, 2));
