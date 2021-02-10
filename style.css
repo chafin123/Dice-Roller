@@ -12,6 +12,26 @@ section {
     justify-content: center;
     align-content: center;
 }
+input[type="number"] {
+    width: 50px;
+    margin-bottom: 10px;
+}
+select {
+    margin-bottom: 50px;
+}
 .die-form{
+    text-align: left;
     display: none;
+    width: 200px;
+}
+.character-stats-form {
+    display: none;
+}
+#results-history-container {
+    max-width: 100%;
+    height: auto;
+    background-color: grey;
+}
+#results-history {
+    width: 80%;
 }

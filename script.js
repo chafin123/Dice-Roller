@@ -4,21 +4,21 @@ function roll (die) {
     )
 }
 function rollMultipleDie (die, numDie = 1) {
-    let arr = [];
+    let dieInputArr = [];
     for(i = 0; i < numDie; i++) {
-        arr.push(roll(die));
+        dieInputArr.push(roll(die));
     }
-    return arr;
+    return dieInputArr;
 }
 function modifiedRoll(die,mod) {
     return (roll(die) + mod )
 } 
 function multipleModifedRoll(die,numDie,mod) {
-    let arr = [];
+    let dieInputArr = [];
     for(i=0; i < numDie; i++) {
-        arr.push(modifiedRoll(die,mod));
+        dieInputArr.push(modifiedRoll(die,mod));
     }
-    return arr;
+    return dieInputArr;
 }
 function advantage(x,y) {
     let a = modifiedRoll(x,y);
@@ -55,8 +55,21 @@ function low(die,passNum,modifer) {
         return "pass"
     } return "fail"
 }
-function statsRerollOne() {
-    
+function statsDropLowest() {
+    let stats = 0;
+    let a = roll(6);
+    let b = roll(6);
+    let c = roll(6);
+    let d = roll(6);
+    stats = a + b + c + d;
+    let least = a;
+    least = (b < least) ? b : least;
+    least = (c < least) ? c : least;
+    least = (d < least) ? d : least; 
+    stats -= least;
+    return stats
+}
+function statsRerollOne() {   
     let stats = 0;
     let a = roll(6);
     let b = roll(6);
@@ -82,7 +95,18 @@ function statsRerollOne() {
     stats -= least;
     return stats
 }
-function rollStats() {
+function characterStatsDropLowest() {
+    let stats = [];
+    let a = statsDropLowest();
+    let b = statsDropLowest();
+    let c = statsDropLowest();
+    let d = statsDropLowest();
+    let e = statsDropLowest();
+    let f = statsDropLowest();
+    stats.push(a,b,c,d,e,f);
+    return stats
+}
+function characterStatsRerollOnesDropLowest() {
     let stats = [];
     let a = statsRerollOne();
     let b = statsRerollOne();
@@ -95,24 +119,24 @@ function rollStats() {
 }
 
 //Start of HTML interaction
-let arr = [];
+let resultsHistory = [];
+let dieInputArr = [];
 const dieOption = document.getElementById("choose-a-die-option");
 //this function closes forms when they are not choosen
 dieOption.addEventListener("change", function() {
     let currentOption = dieOption.value; 
-    if(arr.length >= 1) {
-        for(i=0;i < arr.length; i++) {
-            if(arr[i] !== currentOption) {
-            document.getElementById([arr[i]]).style.display = "none";
+    if(dieInputArr.length >= 1) {
+        for(i=0;i < dieInputArr.length; i++) {
+            if(dieInputArr[i] !== currentOption) {
+            document.getElementById([dieInputArr[i]]).style.display = "none";
             }
                 }
-        arr = [];
+        dieInputArr = [];
     } 
     if(currentOption === "") {
-        alert('choose an option');
     } else {
         document.getElementById([currentOption]).style.display = "inline";
-        arr.push(currentOption);
+        dieInputArr.push(currentOption);
        }
 })
 //start of basic roll
@@ -125,6 +149,8 @@ baseDieRollSubmitButton.addEventListener("click", function() {
     let numDie = parseInt(baseDieRollNumberOfDie.value);
     let rollResults = rollMultipleDie(dieSides,numDie);
     baseDieRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
 //start of modifed roll
 const modifiedDieRollSides = document.getElementById("number-of-sides-modifed-die-roll");
@@ -138,6 +164,8 @@ modifedDieRollSubmitButton.addEventListener("click", function() {
     let modifer = parseInt(modifedDieRollModifer.value);
     let rollResults = multipleModifedRoll(dieSides,numDie,modifer);
     modifedDieRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
 //start of advantage roll
 const advantageDieRollSides = document.getElementById("number-of-advantage-die-sides");
@@ -149,6 +177,8 @@ advantageDieRollSubmitButton.addEventListener("click", function() {
     let modifer = parseInt(advantageDieRollModifer.value);
     let rollResults = advantage(dieSides,modifer);
     advantageDieRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
 //start of disadvantage roll
 
@@ -161,8 +191,9 @@ disadvantageDieRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(disadvantageDieRollSides.value);
     let modifer = parseInt(disadvantageDieRollModifer.value);
     let rollResults = disadvantage(dieSides,modifer);
-    console.log(dieSides,modifer);
     disadvantageDieRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
 //start of high roll
 const highRollDieSides = document.getElementById("high-roll-die-sides");
@@ -174,7 +205,10 @@ highRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(highRollDieSides.value);
     let passNumber = parseInt(highRollDiePassNumber.value);
     let modifer = parseInt(highRollModiferNumber.value);
-    highRollResults.innerHTML = high(dieSides,passNumber,modifer);
+    let rollResults = high(dieSides,passNumber,modifer);
+    highRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
 //start of low roll
 const lowRollDieSides = document.getElementById("low-roll-die-sides");
@@ -186,17 +220,39 @@ lowRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(lowRollDieSides.value);
     let passNumber = parseInt(lowRollDiePassNumber.value);
     let modifer = parseInt(lowRollModiferNumber.value);
-    lowRollResults.innerHTML = low(dieSides,passNumber,modifer);
+    let rollResults = low(dieSides,passNumber,modifer);
+    lowRollResults.innerHTML = rollResults;
+    resultsHistory.push(rollResults);
+    document.getElementById("results-history").innerHTML = resultsHistory;
 })
-//start of single stat reroll ones drop lowest
-const singleStatRerollOnesButton = document.getElementById("stat-reroll-ones-button");
-const singleStatRerollOnesResults = document.getElementById("stats-reroll-ones-results");
-singleStatRerollOnesButton.addEventListener("click", function() {
-    singleStatRerollOnesResults.innerHTML = statsRerollOne();
+//select character stats form
+let characterStatsArr = [];
+const characterStatOption = document.getElementById("choose-a-character-stat-option")
+characterStatOption.addEventListener("change", function() {
+    let currentOption = characterStatOption.value; 
+    if(characterStatsArr.length >= 1) {
+        for(i=0;i < characterStatsArr.length; i++) {
+            if(characterStatsArr[i] !== currentOption) {
+            document.getElementById([characterStatsArr[i]]).style.display = "none";
+            }
+                }
+        characterStatsArr = [];
+    } 
+    if(currentOption === "") {
+    } else {
+        document.getElementById([currentOption]).style.display = "inline";
+        characterStatsArr.push(currentOption);
+       }
 })
 //start of character stats rerool ones drop lowest
 const characterStatRerollOnesButton = document.getElementById("character-stats-reroll-ones-button");
 const characterStatRerollOnesResults = document.getElementById("character-stats-reroll-ones-results");
 characterStatRerollOnesButton.addEventListener("click", function() {
-    characterStatRerollOnesResults.innerHTML = rollStats();
+    characterStatRerollOnesResults.innerHTML = characterStatsRerollOnesDropLowest();
+})
+//character drop lowest
+const characterStatDropLowestButton = document.getElementById("character-stats-drop-lowest-button");
+const characterStatsDropLowestResults = document.getElementById("character-stats-drop-lowest-results");
+characterStatDropLowestButton.addEventListener("click", function () {
+    characterStatsDropLowestResults.innerHTML = characterStatsDropLowest(); 
 })
