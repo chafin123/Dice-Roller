@@ -26,11 +26,11 @@
             <form class="die-form" id="base-die-form">
                 <label class="die-input-label" id="number-of-sides-base-die-roll-label">
                     Die Sides
-                    <input class="die-input" type="number" id="number-of-sides-base-die-roll" value="20">
+                    <input class="die-input" type="number" id="number-of-sides-base-die-roll" min="2" maxlength="3" value="20">
                 </label> <br>
                 <label class="die-input-label" id="number-of-base-die-label">
                     Die Number
-                    <input class="die-input" type="number" id="number-of-base-die" value="1">
+                    <input class="die-input" type="number" id="number-of-base-die" min="1" maxlength="3" value="1">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="base-die-submit-button">Roll!</button>
                 <p id="base-die-results">Results</p>
@@ -38,15 +38,15 @@
             <form class="die-form" id="modifed-die-form">
                 <label class="die-input-label" id="number-of-sides-modifed-die-roll-label">
                     Die Sides
-                    <input class="die-input" type="number" id="number-of-sides-modifed-die-roll" value="20">
+                    <input class="die-input" type="number" id="number-of-sides-modifed-die-roll" min="2" maxlength="3" value="20">
                 </label><br>
                 <label class="die-input-label" id="number-of-modifed-die-label">
                     Die Number
-                    <input class="die-input" type="number" id="number-of-modifed-die" value="1">
+                    <input class="die-input" type="number" id="number-of-modifed-die" min="1" maxlength="3" value="1">
                 </label><br>
                 <label class="die-input-label" id="modifer-modifed-die-label">
                     Modifer
-                    <input class="die-input" type="number" id="modifer-modifed-die" value="0">
+                    <input class="die-input" type="number" id="modifer-modifed-die" min="0" maxlength="3" value="0">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="modifed-die-submit-button">Roll!</button>
                 <p id="modifed-die-results">Results</p>
@@ -54,11 +54,11 @@
             <form class="die-form" id="advantage-die-form">
                 <label class="die-input-label" id="number-of-advantage-die-sides-label">
                     Die Sides
-                    <input class="die-input" type="number" id="number-of-advantage-die-sides" value="20">
+                    <input class="die-input" type="number" id="number-of-advantage-die-sides" min="2" maxlength="3" value="20">
                 </label><br>
                 <label class="die-input-label" id="modifer-advantage-die-label">
                     Modifer
-                    <input class="die-input" type="number" id="modifer-advantage-die" value="0">
+                    <input class="die-input" type="number" id="modifer-advantage-die" min="0" maxlength="3" value="0">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="advantage-die-submit-button">Roll!</button>
                 <p id="advantage-die-results">Results</p>
@@ -66,11 +66,11 @@
             <form class="die-form" id="disadvantage-die-form">
                 <label class="die-input-label" id="number-of-disadvantage-die-sides-label">
                     Die Sides
-                    <input class="die-input" type="number" id="number-of-disadvantage-die-sides" value="20">
+                    <input class="die-input" type="number" id="number-of-disadvantage-die-sides"  min="2" maxlength="3" value="20">
                 </label><br>
                 <label class="die-input-label" id="modifer-disadvantage-die-label">
                     Modifer
-                    <input class="die-input" type="number" id="disadvantage-die-modifer" value="0">
+                    <input class="die-input" type="number" id="disadvantage-die-modifer" min="0" maxlength="3" value="0">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="disadvantage-die-submit-button">Roll!</button>
                 <p id="disadvantage-die-results">Results</p>
@@ -78,15 +78,15 @@
             <form class="die-form" id="high-roll-form">
                 <label class="die-input-label" id="high-roll-die-sides-label">
                     Die Sides
-                    <input class="die-input" type="number" id="high-roll-die-sides" value="100">
+                    <input class="die-input" type="number" id="high-roll-die-sides" min="1" maxlength="3" value="100">
                 </label><br>
                 <label class="die-input-label" id="high-roll-pass-number-label">
                     Pass
-                    <input class="die-input" type="number" id="high-roll-pass-number" value="0">
+                    <input class="die-input" type="number" id="high-roll-pass-number" min="1" maxlength="3" value="90">
                 </label><br>
                 <label class="die-input-label" id="high-roll-modifer-label">
                     Modifer
-                    <input class="die-input" type="number" id="high-roll-modifer" value="0">
+                    <input class="die-input" type="number" id="high-roll-modifer" min="1" maxlength="3" value="10">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="high-roll-submit-button">Roll!</button>
                 <p id="high-roll-results">Results</p>
@@ -94,15 +94,15 @@
             <form class="die-form" id="low-roll-form">
                 <label class="die-input-label" id="low-roll-die-sides-label">
                     Die Sides
-                    <input class="die-input" type="number" id="low-roll-die-sides" value="100">
+                    <input class="die-input" type="number" id="low-roll-die-sides" min="1" maxlength="3" value="100">
                 </label><br>
                 <label class="die-input-label" id="low-roll-pass-number-label">
                     Pass
-                    <input class="die-input" type="number" id="low-roll-pass-number" value="0">
+                    <input class="die-input" type="number" id="low-roll-pass-number" min="0" maxlength="3" value="0">
                 </label><br>
                 <label class="die-input-label" id="low-roll-modifer-label">
                     Modifer
-                    <input class="die-input" type="number" id="low-roll-modifer" value="0">
+                    <input class="die-input" type="number" id="low-roll-modifer" min="1" maxlength="3" value="0">
                 </label>
                 <button class="submit-button" type="button" value="submit" id="low-roll-submit-button">Roll!</button>
                 <p id="low-roll-results">Results</p>
