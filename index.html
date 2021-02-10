@@ -9,7 +9,7 @@
     
 </head>
 <body>
-    <h1>Table Top RPG die Roller</h1>
+    <h1>Table Top RPG Die Roller</h1>
     <section class="section-container" id="die-roll">
             <label id="choose-a-die-option-label">
                 Choose an option
@@ -64,18 +64,22 @@
                 <p id="advantage-die-results">Results</p>
             </form>
             <form class="die-form" id="disadvantage-die-form">
-                <label class="die-input-label" id="number-of-disadvantage-die-sides">
-                    number of disadvantage die
-                    <input class="die-input" type="number" id="number-of-disadvantage-die" value="1">
+                <label class="die-input-label" id="number-of-disadvantage-die-sides-label">
+                    number of disadvantage die sides
+                    <input class="die-input" type="number" id="number-of-disadvantage-die-sides" value="20">
                 </label>
                 <label class="die-input-label" id="modifer-disadvantage-die-label">
                     modifer for disadvantage die
-                    <input class="die-input" type="number" id="modifer-disadvatange-die" value="0">
+                    <input class="die-input" type="number" id="disadvantage-die-modifer" value="0">
                 </label>
-                <button class="submit-button" value="submit" id="disadvantage-die-submit-button">Roll!</button>
+                <button class="submit-button" type="button" value="submit" id="disadvantage-die-submit-button">Roll!</button>
                 <p id="disadvantage-die-results">Results</p>
             </form>
             <form class="die-form" id="high-roll-form">
+                <label class="die-input-label" id="high-roll-die-sides-label">
+                    Number of Die Sides
+                    <input class="die-input" id="high-roll-die-sides" value="100">
+                </label>
                 <label class="die-input-label" id="high-roll-pass-number-label">
                     high roll pass number
                     <input class="die-input" type="number" id="high-roll-pass-number" value="0">
@@ -84,10 +88,13 @@
                     high roll modifer
                     <input class="die-input" type="number" id="high-roll-modifer" value="0">
                 </label>
-                <button class="submit-button" value="submit" id="high-roll-submit-button">Roll!</button>
+                <button class="submit-button" type="button" value="submit" id="high-roll-submit-button">Roll!</button>
                 <p id="high-roll-results">Results</p>
             </form>
             <form class="die-form" id="low-roll-form">
+                <label class="die-input-label" id="low-roll-die-sides-label">
+                    <input class="die-input" id="low-roll-die-sides" value="100">
+                </label>
                 <label class="die-input-label" id="low-roll-pass-number-label">
                     low roll pass number
                     <input class="die-input" type="number" id="low-roll-pass-number" value="0">
@@ -96,19 +103,19 @@
                     low roll modifer
                     <input class="die-input" type="number" id="low-roll-modifer" value="0">
                 </label>
-                <button class="submit-button" value="submit" id="low-roll-submit-button">Roll!</button>
+                <button class="submit-button" type="button" value="submit" id="low-roll-submit-button">Roll!</button>
                 <p id="low-roll-results">Results</p>
             </form>
     </section>
     <br>
     <section class="section-container" id="character-stats">
-        <form class=character-stats-form id="character-stats-single-dice-roll">
-            <button class="submit-button" id="stat-reroll-ones" value="submit">Reroll One</button>
+        <form class=character-stats-form id="character-stats-single-dice-roll-form">
+            <button class="submit-button" type="button" id="stat-reroll-ones-button" value="submit">Reroll One</button>
             <p id="stats-reroll-ones-results">Results</p>
         </form>
-        <form class="character-stats-from" id="character-stats-reroll-ones">
-            <button class="submit-button" id="stat-reroll-ones-sheet" value="submit">Roll Character Stats</button>
-            <p id="stats-reroll-ones-sheet-results">Results</p>
+        <form class="character-stats-from" id="character-stats-reroll-ones-form">
+            <button class="submit-button" type="button" id="character-stats-reroll-ones-button" value="submit">Roll Character Stats</button>
+            <p id="character-stats-reroll-ones-results">Results</p>
         </form>
     </section>
     <script src="script.js"></script>

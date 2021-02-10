@@ -41,17 +41,17 @@ function skillCheck(x,y,z) {
         return "pass"
     } return "fail"
 }
-function high (x,y) {
-    let a = modifiedRoll(100,x);
+function high (die,passNum,modifer) {
+    let a = modifiedRoll(die,modifer);
     
-    if(a >= y) {
+    if(a >= passNum) {
         return "pass"
     } return "fail"
 }
-function low(x,y) {
-    let a = modifiedRoll(100,x);
+function low(die,passNum,modifer) {
+    let a = modifiedRoll(die, modifer);
 
-    if(a <= y) {
+    if(a <= passNum) {
         return "pass"
     } return "fail"
 }
@@ -156,7 +156,7 @@ advantageDieRollSubmitButton.addEventListener("click", function() {
 //start of disadvantage roll
 
 const disadvantageDieRollSides = document.getElementById("number-of-disadvantage-die-sides");
-const disadvantageDieRollModifer = document.getElementById("modifer-disadvantage-die");
+const disadvantageDieRollModifer = document.getElementById("disadvantage-die-modifer");
 const disadvantageDieRollSubmitButton = document.getElementById("disadvantage-die-submit-button");
 const disadvantageDieRollResults = document.getElementById("disadvantage-die-results");
 
@@ -164,8 +164,50 @@ disadvantageDieRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(disadvantageDieRollSides.value);
     let modifer = parseInt(disadvantageDieRollModifer.value);
     let rollResults = disadvantage(dieSides,modifer);
+    console.log(dieSides,modifer);
     disadvantageDieRollResults.innerHTML = rollResults;
 })
 //start of high roll
+const highRollDieSides = document.getElementById("high-roll-die-sides");
+const highRollDiePassNumber = document.getElementById("high-roll-pass-number");
+const highRollModiferNumber = document.getElementById("high-roll-modifer");
+const highRollSubmitButton = document.getElementById("high-roll-submit-button");
+const highRollResults = document.getElementById("high-roll-results");
 
-const highDieRollSides = document.getElementById("")
+highRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(highRollDieSides.value);
+    let passNumber = parseInt(highRollDiePassNumber.value);
+    let modifer = parseInt(highRollModiferNumber.value);
+    highRollResults.innerHTML = high(dieSides,passNumber,modifer);
+})
+
+//start of low roll
+
+const lowRollDieSides = document.getElementById("low-roll-die-sides");
+const lowRollDiePassNumber = document.getElementById("low-roll-pass-number");
+const lowRollModiferNumber = document.getElementById("low-roll-modifer");
+const lowRollSubmitButton = document.getElementById("low-roll-submit-button");
+const lowRollResults = document.getElementById("low-roll-results");
+
+lowRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(lowRollDieSides.value);
+    let passNumber = parseInt(lowRollDiePassNumber.value);
+    let modifer = parseInt(lowRollModiferNumber.value);
+    lowRollResults.innerHTML = low(dieSides,passNumber,modifer);
+})
+
+//start of single stat reroll ones drop lowest
+const singleStatRerollOnesButton = document.getElementById("stat-reroll-ones-button");
+const singleStatRerollOnesResults = document.getElementById("stats-reroll-ones-results");
+
+singleStatRerollOnesButton.addEventListener("click", function() {
+    singleStatRerollOnesResults.innerHTML = statsRerollOne();
+})
+
+//start of character stats rerool ones drop lowest
+const characterStatRerollOnesButton = document.getElementById("character-stats-reroll-ones-button");
+const characterStatRerollOnesResults = document.getElementById("character-stats-reroll-ones-results");
+
+characterStatRerollOnesButton.addEventListener("click", function() {
+    characterStatRerollOnesResults.innerHTML = rollStats();
+})
