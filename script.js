@@ -151,7 +151,21 @@ advantageDieRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(advantageDieRollSides.value);
     let modifer = parseInt(advantageDieRollModifer.value);
     let rollResults = advantage(dieSides,modifer);
-    console.log(dieSides,modifer);
-    console.log(rollResults);
     advantageDieRollResults.innerHTML = rollResults;
 })
+//start of disadvantage roll
+
+const disadvantageDieRollSides = document.getElementById("number-of-disadvantage-die-sides");
+const disadvantageDieRollModifer = document.getElementById("modifer-disadvantage-die");
+const disadvantageDieRollSubmitButton = document.getElementById("disadvantage-die-submit-button");
+const disadvantageDieRollResults = document.getElementById("disadvantage-die-results");
+
+disadvantageDieRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(disadvantageDieRollSides.value);
+    let modifer = parseInt(disadvantageDieRollModifer.value);
+    let rollResults = disadvantage(dieSides,modifer);
+    disadvantageDieRollResults.innerHTML = rollResults;
+})
+//start of high roll
+
+const highDieRollSides = document.getElementById("")
