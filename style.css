@@ -19,6 +19,9 @@ input[type="number"] {
 select {
     margin-bottom: 50px;
 }
+textarea {
+    background-color: lightgray;
+}
 .die-form{
     text-align: left;
     display: none;
@@ -30,7 +33,6 @@ select {
 #results-history-container {
     max-width: 100%;
     height: auto;
-    background-color: grey;
 }
 #results-history {
     width: 80%;
