@@ -6,13 +6,20 @@ function roll (die) {
 function rollMultipleDie (die, numDie = 1) {
     let arr = [];
     for(i = 0; i < numDie; i++) {
-        arr.push(Math.floor(Math.random()) * die +1);
+        arr.push(roll(die));
     }
     return arr;
 }
-function modifiedRoll (Die,Mod) {
-    return (roll(Die) + Mod )
+function modifiedRoll(die,mod) {
+    return (roll(die) + mod )
 } 
+function multipleModifedRoll(die,numDie,mod) {
+    let arr = [];
+    for(i=0; i < numDie; i++) {
+        arr.push(modifiedRoll(die,mod));
+    }
+    return arr;
+}
 function advantage(x,y) {
     let a = modifiedRoll(x,y);
     let b = modifiedRoll(x,y);
@@ -108,17 +115,43 @@ dieOption.addEventListener("change", function() {
         arr.push(currentOption);
        }
 })
-const baseDieRollSides = document.getElementById("number-of-sides-base-die-roll").value;
-const baseDieRollNumberOfDie = document.getElementById("number-of-base-die").value;
+//start of basic roll
+const baseDieRollSides = document.getElementById("number-of-sides-base-die-roll");
+const baseDieRollNumberOfDie = document.getElementById("number-of-base-die");
 const baseDieRollSubmitButton = document.getElementById("base-die-submit-button");
 const baseDieRollResults = document.getElementById("base-die-results");
 
 baseDieRollSubmitButton.addEventListener("click", function() {
-    let dieSides = parseInt(baseDieRollSides);
-    let numDie = parseInt(baseDieRollNumberOfDie);
+    let dieSides = parseInt(baseDieRollSides.value);
+    let numDie = parseInt(baseDieRollNumberOfDie.value);
     let rollResults = rollMultipleDie(dieSides,numDie);
-    console.log(dieSides,numDie);
-    console.log(rollResults);
     baseDieRollResults.innerHTML = rollResults;
 })
-console.log(rollMultipleDie(20, 2));
+//start of modifed roll
+const modifiedDieRollSides = document.getElementById("number-of-sides-modifed-die-roll");
+const modifiedDieRollNumberOfDie = document.getElementById("number-of-modifed-die");
+const modifedDieRollModifer = document.getElementById("modifer-modifed-die");
+const modifedDieRollSubmitButton = document.getElementById("modifed-die-submit-button");
+const modifedDieRollResults = document.getElementById("modifed-die-results");
+
+modifedDieRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(modifiedDieRollSides.value);
+    let numDie = parseInt(modifiedDieRollNumberOfDie.value);
+    let modifer = parseInt(modifedDieRollModifer.value);
+    let rollResults = multipleModifedRoll(dieSides,numDie,modifer);
+    modifedDieRollResults.innerHTML = rollResults;
+})
+//start of advantage roll
+const advantageDieRollSides = document.getElementById("number-of-advantage-die-sides");
+const advantageDieRollModifer = document.getElementById("modifer-advantage-die");
+const advantageDieRollSubmitButton = document.getElementById("advantage-die-submit-button");
+const advantageDieRollResults = document.getElementById("advantage-die-results");
+
+advantageDieRollSubmitButton.addEventListener("click", function() {
+    let dieSides = parseInt(advantageDieRollSides.value);
+    let modifer = parseInt(advantageDieRollModifer.value);
+    let rollResults = advantage(dieSides,modifer);
+    console.log(dieSides,modifer);
+    console.log(rollResults);
+    advantageDieRollResults.innerHTML = rollResults;
+})
