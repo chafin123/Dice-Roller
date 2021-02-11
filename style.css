@@ -13,7 +13,7 @@ section {
     align-content: center;
 }
 input[type="number"] {
-    width: 50px;
+    width: 30px;
     margin-bottom: 10px;
 }
 select {
@@ -33,7 +33,13 @@ textarea {
 #results-history-container {
     max-width: 100%;
     height: auto;
+    display: grid;
 }
 #results-history {
     width: 80%;
+}
+#clear-results-history-button {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
 }

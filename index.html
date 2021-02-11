@@ -37,16 +37,16 @@
             </form>
             <form class="die-form" id="modifed-die-form">
                 <label class="die-input-label" id="number-of-sides-modifed-die-roll-label">
-                    Die Sides
                     <input class="die-input" type="number" id="number-of-sides-modifed-die-roll" min="2" maxlength="3" value="20">
-                </label><br>
-                <label class="die-input-label" id="number-of-modifed-die-label">
-                    Die Number
+                </label>
+                <label class="die-input-label" id="number-of-modifed-die-label"> (
                     <input class="die-input" type="number" id="number-of-modifed-die" min="1" maxlength="3" value="1">
-                </label><br>
+                </label>
+                <label class="die-input-label" id="dice-modifer-modifed-die-label">
+                    <input class="die-input"  type="number" id="dice-modifer-modifed-die" min="0" maxlength="2" value="0">
+                </label>
                 <label class="die-input-label" id="modifer-modifed-die-label">
-                    Modifer
-                    <input class="die-input" type="number" id="modifer-modifed-die" min="0" maxlength="3" value="0">
+                    <input class="die-input" type="number" id="modifer-modifed-die" min="0" maxlength="3" value="0"> )
                 </label>
                 <button class="submit-button" type="button" value="submit" id="modifed-die-submit-button">Roll!</button>
                 <p id="modifed-die-results">Results</p>
@@ -109,9 +109,10 @@
             </form>
             
     </section>
-    <div id=results-history-container>
-        <textarea id="results-history" cols="20" rows="10" readonly="readonly">Results History</textarea>
-    </div>
+    <section id=results-history-container>
+        <textarea id="results-history" cols="25" rows="10" readonly="readonly">Results History</textarea>
+        <button class="submit-button" type="button"id="clear-results-history-button">Clear History</button>
+    </section>
     <br>
     <section class="section-container" id="character-stats">
         <select id="choose-a-character-stat-option">

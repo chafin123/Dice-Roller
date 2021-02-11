@@ -13,10 +13,10 @@ function rollMultipleDie (die, numDie = 1) {
 function modifiedRoll(die,mod) {
     return (roll(die) + mod )
 } 
-function multipleModifedRoll(die,numDie,mod) {
+function multipleModifedRoll(die,numDie,mod, dieMod) {
     let dieInputArr = [];
     for(i=0; i < numDie; i++) {
-        dieInputArr.push(modifiedRoll(die,mod));
+        dieInputArr.push(modifiedRoll(die,mod) + dieMod);
     }
     return dieInputArr;
 }
@@ -156,13 +156,15 @@ baseDieRollSubmitButton.addEventListener("click", function() {
 const modifiedDieRollSides = document.getElementById("number-of-sides-modifed-die-roll");
 const modifiedDieRollNumberOfDie = document.getElementById("number-of-modifed-die");
 const modifedDieRollModifer = document.getElementById("modifer-modifed-die");
+const modifedDiceModifer = document.getElementById("dice-modifer-modifed-die");
 const modifedDieRollSubmitButton = document.getElementById("modifed-die-submit-button");
 const modifedDieRollResults = document.getElementById("modifed-die-results");
 modifedDieRollSubmitButton.addEventListener("click", function() {
     let dieSides = parseInt(modifiedDieRollSides.value);
     let numDie = parseInt(modifiedDieRollNumberOfDie.value);
     let modifer = parseInt(modifedDieRollModifer.value);
-    let rollResults = multipleModifedRoll(dieSides,numDie,modifer);
+    let dieModifer = parseInt(modifedDiceModifer.value);
+    let rollResults = multipleModifedRoll(dieSides,numDie,modifer,dieModifer);
     modifedDieRollResults.innerHTML = rollResults;
     resultsHistory.push(rollResults);
     document.getElementById("results-history").innerHTML = resultsHistory;
@@ -255,4 +257,9 @@ const characterStatDropLowestButton = document.getElementById("character-stats-d
 const characterStatsDropLowestResults = document.getElementById("character-stats-drop-lowest-results");
 characterStatDropLowestButton.addEventListener("click", function () {
     characterStatsDropLowestResults.innerHTML = characterStatsDropLowest(); 
+})
+const clearResultsHistoryButton = document.getElementById("clear-results-history-button");
+clearResultsHistoryButton.addEventListener("click", function() {
+    document.getElementById("results-history").innerHTML = [];
+    resultsHistory = [];
 })
